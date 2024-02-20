@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="main_color">#06B1FF</color>
+    <color name="back_off_white">#F6F6F6</color>
+    <color name="red_army">#DA251C</color>
+    <color name="blue_army">#20317F</color>
+    <color name="army_lightblue">#76C5F0</color>
+    <color name="flag_kesari">#FF671F</color>
+    <color name="flag_green">#046A38</color>
+</resources>

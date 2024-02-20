@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="mvModel"
+            type="com.example.forceconnect.instructor.viewmodel.MyViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center"
+        tools:context=".instructor.views.InstructorLoginActivity">
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="Instructor Login"/>
+        <EditText
+            android:id="@+id/idInsLoginMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter your mail"/>
+        <EditText
+            android:id="@+id/idInsLoginPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter your password"/>
+        <Button
+            android:id="@+id/idInsLoginBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Login"/>
+        <TextView
+            android:id="@+id/idNewUserLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New User? Sign Up!"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</layout>

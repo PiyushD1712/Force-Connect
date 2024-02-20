@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/idHomeBNM"
+        android:icon="@drawable/home"
+        app:showAsAction="always"
+        android:title="Home"/>
+    <item android:id="@+id/idNewsBNM"
+        android:title="News"
+        app:showAsAction="always"
+        android:icon="@drawable/newspaper_folded"/>
+    <item android:id="@+id/idBlogBNM"
+        android:title="Blogs"
+        android:icon="@drawable/blog"
+        app:showAsAction="always"/>
+    <item android:id="@+id/idProfileBNM"
+        android:title="Profile"
+        android:icon="@drawable/user"
+        app:showAsAction="always"/>
+</menu>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "823778539361",
+    "project_id": "forceconnect-49e98",
+    "storage_bucket": "forceconnect-49e98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823778539361:android:1f12f31583d36bcd9bb720",
+        "android_client_info": {
+          "package_name": "com.example.forceconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQL8bJCRv2eq1h4n02AIWXm_i_JeLBSTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

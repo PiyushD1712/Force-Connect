@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/back_off_white"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_main"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        android:layout_marginBottom="80dp"
+        android:elevation="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Your Journey of Excellence!!"
+        android:gravity="center"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="80dp"
+        android:textSize="30sp"/>
+    <Button
+        android:id="@+id/idInstructorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Are You an Instructor?\nClick Here"
+        android:backgroundTint="@color/main_color"
+        android:elevation="10dp"
+        android:textSize="15sp"/>
+    <Button
+        android:id="@+id/idLearnerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:elevation="10dp"
+        android:text="Are ypu a Learner?\nClick Here"
+        android:backgroundTint="@color/main_color"
+        android:textSize="15sp"/>
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".instructor.views.InstructorRegisterActivity">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="Instructor Registration"/>
+        <EditText
+            android:id="@+id/idInsRegMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter your mail"/>
+        <EditText
+            android:id="@+id/idInsRegPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter your password"/>
+        <EditText
+            android:id="@+id/idInsRegUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter your Username"/>
+        <Button
+            android:id="@+id/idInsRegBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="SignUp"/>
+        <TextView
+            android:id="@+id/idInsRegLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already a user? Click here!"
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"/>
+
+
+    </LinearLayout>
+</layout>
