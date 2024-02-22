@@ -159,16 +159,16 @@ public class InstructorRepo {
         }
     }
 
-//    public MutableLiveData<List<InstructorUser>> getMutableLiveData() {
-//        CollectionReference reference = database.collection("Instructor");
-//        reference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//            @Override
-//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                List<InstructorUser> user1 = queryDocumentSnapshots.toObjects(InstructorUser.class);
-//                Log.d("Taggy",user1+"");
-//                mutableLiveData.postValue(user1);
-//            }
-//        });
-//        return mutableLiveData;
-//    }
+    public MutableLiveData<List<InstructorUser>> getMutableLiveData() {
+        CollectionReference reference = database.collection("Instructor");
+        reference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                List<InstructorUser> user1 = queryDocumentSnapshots.toObjects(InstructorUser.class);
+
+                mutableLiveData.postValue(user1);
+            }
+        });
+        return mutableLiveData;
+    }
 }

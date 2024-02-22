@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -43,7 +44,12 @@ public class InstructorHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instructor_home);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_instructor_home);
         myViewModel = new ViewModelProvider(this).get(MyViewModel.class);
-
+        binding.idImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myViewModel.signOUT();
+            }
+        });
         binding.idBottomNavigationHome.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -65,6 +71,7 @@ public class InstructorHomeActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        replaceFragments(new HomeFragment());
         super.onStart();
     }
     private void replaceFragments(Fragment fragment){

@@ -5,9 +5,12 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.forceconnect.instructor.models.InstructorUser;
 import com.example.forceconnect.instructor.repository.InstructorRepo;
+
+import java.util.List;
 
 public class MyViewModel extends AndroidViewModel {
     private InstructorRepo repository;
@@ -31,5 +34,8 @@ public class MyViewModel extends AndroidViewModel {
 
     public void writeUser(InstructorUser instructorUser){
         repository.writeUserData(instructorUser);
+    }
+    public MutableLiveData<List<InstructorUser>> getUserData(){
+        return repository.getMutableLiveData();
     }
 }

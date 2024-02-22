@@ -19,6 +19,7 @@
                 android:text="Hello Name!!"
                 android:textSize="30sp"/>
             <ImageView
+                android:id="@+id/idImageView"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:src="@mipmap/ic_launcher"
