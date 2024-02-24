@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -14,8 +15,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.forceconnect.R;
 import com.example.forceconnect.databinding.ActivityInstructorHomeBinding;
 import com.example.forceconnect.instructor.models.InstructorUser;
@@ -36,14 +40,20 @@ public class InstructorHomeActivity extends AppCompatActivity {
 
     private MyViewModel myViewModel;
     private ActivityInstructorHomeBinding binding;
+    private ImageView imgPreview;
+    private TextView textView;
     private FirebaseAuth.AuthStateListener authStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor_home);
+
         binding = DataBindingUtil.setContentView(this,R.layout.activity_instructor_home);
         myViewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        imgPreview = binding.idImageView;
+        textView = binding.idNameUser;
+
         binding.idImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +74,13 @@ public class InstructorHomeActivity extends AppCompatActivity {
                     replaceFragments(new ProfileFragment());
                 }
                 return true;
+            }
+        });
+        myViewModel.getDetailsUser(FirebaseAuth.getInstance().getCurrentUser().getUid()).observe(this, new Observer<InstructorUser>() {
+            @Override
+            public void onChanged(InstructorUser instructorUser) {
+                textView.setText("Hello "+instructorUser.getName());
+                Glide.with(getApplicationContext()).load(instructorUser.getImgUrl()).into(imgPreview);
             }
         });
     }

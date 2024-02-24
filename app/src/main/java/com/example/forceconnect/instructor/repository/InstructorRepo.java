@@ -16,13 +16,17 @@ import com.example.forceconnect.R;
 import com.example.forceconnect.instructor.models.InstructorUser;
 import com.example.forceconnect.instructor.views.InstructorHomeActivity;
 import com.example.forceconnect.instructor.views.ProfileInstructorActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,6 +38,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class InstructorRepo {
+
     private FirebaseFirestore database;
     private FirebaseAuth firebaseAuth;
     private FirebaseUser user;
@@ -41,6 +46,7 @@ public class InstructorRepo {
     private StorageReference storage;
     private List<InstructorUser> list;
     private MutableLiveData<List<InstructorUser>> mutableLiveData;
+    private MutableLiveData<InstructorUser> instructorUserMutableLiveData;
 
     public InstructorRepo(Context context){
         this.context = context;
@@ -50,8 +56,10 @@ public class InstructorRepo {
         storage = FirebaseStorage.getInstance().getReference();
         list = new ArrayList<>();
         mutableLiveData = new MutableLiveData<>();
+        instructorUserMutableLiveData =new MutableLiveData<>();
     }
     public InstructorRepo(){}
+
 
     //  Authentication of the Instructor is done here.
     public void createUserInstructor(String email, String pass){
@@ -111,6 +119,52 @@ public class InstructorRepo {
             Toast.makeText(context,"Fields Empty",Toast.LENGTH_SHORT).show();
         }
     }
+    public void deleteInstructor(FirebaseUser user){
+        user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    database.collection("Instructor").document(user.getUid()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(context, "User deleted", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(context, MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    public MutableLiveData<InstructorUser> getInstructorUserMutableLiveData(String str) {
+            DocumentReference reference = database.collection("Instructor").document(str);
+            reference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    InstructorUser user1 = documentSnapshot.toObject(InstructorUser.class);
+                    instructorUserMutableLiveData.postValue(user1);
+                    Log.v("Database","USER LIVE DATA FETCHED");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        return instructorUserMutableLiveData;
+    }
 
     // Database entry of the user:
     public void writeUserData(InstructorUser instructorUser){
@@ -127,6 +181,7 @@ public class InstructorRepo {
                         @Override
                         public void onSuccess(Uri uri) {
                             String imgUrl = uri.toString();
+                            instructorUser.setImgUrl(imgUrl);
                             database.collection("Instructor")
                                     .document(firebaseAuth.getCurrentUser().getUid())
                                     .set(instructorUser)
@@ -158,17 +213,16 @@ public class InstructorRepo {
             });
         }
     }
-
     public MutableLiveData<List<InstructorUser>> getMutableLiveData() {
         CollectionReference reference = database.collection("Instructor");
         reference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 List<InstructorUser> user1 = queryDocumentSnapshots.toObjects(InstructorUser.class);
-
                 mutableLiveData.postValue(user1);
             }
         });
         return mutableLiveData;
     }
+
 }

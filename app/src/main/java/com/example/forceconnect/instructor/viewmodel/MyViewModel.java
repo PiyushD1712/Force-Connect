@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.forceconnect.instructor.models.InstructorUser;
 import com.example.forceconnect.instructor.repository.InstructorRepo;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -37,5 +38,11 @@ public class MyViewModel extends AndroidViewModel {
     }
     public MutableLiveData<List<InstructorUser>> getUserData(){
         return repository.getMutableLiveData();
+    }
+    public void deleteUser(FirebaseUser user){
+        repository.deleteInstructor(user);
+    }
+    public MutableLiveData<InstructorUser> getDetailsUser(String str){
+        return repository.getInstructorUserMutableLiveData(str);
     }
 }

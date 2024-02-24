@@ -10,14 +10,16 @@
             android:id="@+id/idLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:orientation="horizontal">
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
             <TextView
+                android:id="@+id/idNameUser"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center|start"
                 android:padding="10dp"
                 android:text="Hello Name!!"
-                android:textSize="30sp"/>
+                android:textSize="20sp"/>
             <ImageView
                 android:id="@+id/idImageView"
                 android:layout_width="60dp"
@@ -26,35 +28,8 @@
                 android:layout_alignParentEnd="true"
                 android:scaleType="centerCrop"
                 android:background="@drawable/image_back"
-                android:clipToOutline="true"
-                />
+                android:clipToOutline="true"/>
         </RelativeLayout>
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/idLinearLayout"-->
-<!--            android:gravity="center"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="HOME INSTRUCTOR"-->
-<!--                android:textSize="40sp" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/idLogoutBtn"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Logout" />-->
-
-<!--            <Button-->
-<!--                android:id="@+id/idFindUserHome"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Find user" />-->
-<!--        </LinearLayout>-->
         <FrameLayout
             android:id="@+id/idFrameLayout"
             android:layout_width="match_parent"
